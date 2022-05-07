@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<suite name="测试报告">
+    <test name="测试模块" preserver-order="true">
+        <classes>
+            <!-- 需要运行的测试类 -->
+            <class name="com.uim.autoapi.test.TestNG"/>
+        </classes>
+    </test>
+    <listeners>
+        <!-- 添加ExtentRport监听 -->
+        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+</suite>

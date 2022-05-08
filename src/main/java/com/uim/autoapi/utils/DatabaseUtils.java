@@ -10,13 +10,17 @@ import java.io.Reader;
 
 public class DatabaseUtils {
 
-    public static SqlSession getSqlSession() throws IOException {
-        //获取配置的资源文件
-        Reader reader= Resources.getResourceAsReader("databaseConfig.xml");
-        //得到SqlSessionFactory，使用类加载器加载xml文件
-        SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(reader);
-        //得到sqlsession对象，这个对象就能执行配置文件中的sql语句啦
-        SqlSession session=factory.openSession();
-        return session;
+    public static SqlSession getSqlSession() {
+        SqlSession sqlsession = null;
+        try {
+            //获取配置的资源文件
+            Reader reader= Resources.getResourceAsReader("mybatis-config.xml");
+            //得到SqlSessionFactory，使用类加载器加载xml文件
+            SqlSessionFactory factory=new SqlSessionFactoryBuilder().build(reader);
+            sqlsession = factory.openSession();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return sqlsession;
     }
 }
